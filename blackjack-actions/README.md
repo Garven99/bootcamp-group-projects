@@ -54,3 +54,6 @@ To run the tests, you can configure your IDE to run unittest tests in the "." di
 ```bash
 python -m unittest test_blackjack.py
 ```
+
+## Youtube Video Explaining Blackjack
+Check out [How to Play Blackjack: Learn from an Expert](https://www.youtube.com/watch?v=UXmbwvr3aKk).
