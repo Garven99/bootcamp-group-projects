@@ -1,0 +1,65 @@
+       [ START GAME ]
+             │
+             ▼
+     [ Create & Shuffle Deck ]
+             │
+   ┌─────────┴─────────┐
+   ▼                   ▼
+[ Deal 2 Cards     [ Deal 2 Cards 
+   to Player ]        to Dealer ]
+   │                   │ (1 Face Up, 1 Face Down)
+   ▼                   ▼
+[ Calculate Scores with Ace Adjustment ]
+   │
+   ├─► (Player Score == 21)? ──► YES ──► [ Check Dealer Blackjack ]
+   │                                             │
+   ▼ NO                                          ├──► YES ──► [ PUSH (Tie) ] ──► [ END ]
+   │                                             └──► NO  ──► [ PLAYER WINS ] ──► [ END ]
+   ▼
+┌───────────────────────────┐
+│     === PLAYER TURN ===   │◄────────────────────────┐
+└───────────────────────────┘                         │
+   │                                                  │
+   ▼                                                  │
+[ Prompt: "Hit" or "Stand"? ]                         │
+   │                                                  │
+   ├─► "Hit" ──► [ Deal 1 Card to Player ]            │
+   │                    │                             │
+   │                    ▼                             │
+   │             [ Recalculate Score ]                │
+   │                    │                             │
+   │                    ├─► (Score > 21)? ──► YES ──► [ PLAYER BUSTS / LOSES ] ──► [ END ]
+   │                    └─► (Score <= 21)? ─► YES ────────────────────────────────────┘
+   │
+   └─► "Stand" ──► 
+                   │
+                   ▼
+       ┌───────────────────────────┐
+       │    === DEALER TURN ===    │◄────────────────────────┐
+       └───────────────────────────┘                         │
+           │                                                 │
+           ▼                                                 │
+       [ Reveal Dealer's Hidden Card ]                       │
+           │                                                 │
+           ▼                                                 │
+       [ Recalculate Dealer Score ]                          │
+           │                                                 │
+           ├─► (Dealer Score < 17)? ──► YES ──► [ Deal 1 Card to Dealer ] ──┘
+           │
+           └─► (Dealer Score >= 17)? ──► YES 
+                                           │
+                                           ▼
+                                   (Dealer Score > 21)?
+                                           │
+                                           ├─► YES ──► [ DEALER BUSTS / PLAYER WINS ] ──► [ END ]
+                                           ▼ NO
+                               ┌───────────────────────────┐
+                               │   === COMPARE SCORES ===  │
+                               └───────────────────────────┘
+                                           │
+                                           ├─► (Player > Dealer) ──► [ PLAYER WINS ]
+                                           ├─► (Dealer > Player) ──► [ DEALER WINS ]
+                                           └─► (Player == Dealer) ──► [ PUSH (Tie) ]
+                                                                          │
+                                                                          ▼
+                                                                      [ END ]
