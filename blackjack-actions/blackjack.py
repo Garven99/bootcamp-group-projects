@@ -4,7 +4,7 @@ RANK_VALUES = {
     "J": 10, "Q": 10, "K": 10, "A": 11,
 }
 
-
+# s
 def hand_value(cards):
     total = sum(RANK_VALUES[card] for card in cards)
     aces = cards.count("A")
@@ -13,7 +13,7 @@ def hand_value(cards):
         aces -= 1
     return total
 
-
+# Displays the game
 def parse_state(text):
     hand_str, dealer_upcard, flag = [part.strip() for part in text.split("|")]
     hand = [rank.strip() for rank in hand_str.split(",")]
