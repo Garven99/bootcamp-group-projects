@@ -18,7 +18,11 @@ def parse_state(text):
     hand_str, dealer_upcard, flag = [part.strip() for part in text.split("|")]
     hand = [rank.strip() for rank in hand_str.split(",")]
 
-    return ...
+    return {
+        "hand": hand,
+        "dealer": dealer_upcard,
+        "can_double": can_double
+    }
 
 
 def generate_actions(state):
