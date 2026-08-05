@@ -26,7 +26,18 @@ def parse_state(text):
 
 
 def generate_actions(state):
-    raise NotImplementedError("This function is not implemented yet.")
+    actions = []
+
+    # Player can always hit or stand
+    actions.append("hit")
+    actions.append("stand")
+
+    # Player can only double with two cards
+    if state["can_double"] == True:
+        if len(state["hand"]) == 2:
+            actions.append("double")
+
+    return actions
 
 
 def apply_action(state, action, next_card=None):
