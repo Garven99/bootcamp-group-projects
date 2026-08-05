@@ -4,7 +4,7 @@ RANK_VALUES = {
     "J": 10, "Q": 10, "K": 10, "A": 11,
 }
 
-# s
+# Sum of the number of the Aces each player has
 def hand_value(cards):
     total = sum(RANK_VALUES[card] for card in cards)
     aces = cards.count("A")
