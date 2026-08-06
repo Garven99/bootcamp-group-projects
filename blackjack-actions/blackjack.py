@@ -20,10 +20,12 @@ def parse_state(text):
 
     return {
         "hand": hand,
-        "dealer": dealer_upcard,
-        "can_double": can_double
+        "dealer_upcard": dealer_upcard,
+        "total": hand_value(hand),
+        "can_double": flag == "first",
+        "can_surrender": flag == "first",
+        "busted": False,
     }
-
 
 def generate_actions(state):
     actions = []
