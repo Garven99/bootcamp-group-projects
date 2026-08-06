@@ -30,17 +30,25 @@ def parse_state(text):
 def generate_actions(state):
     actions = []
 
-    # Player can always hit or stand
+    # Always legal
     actions.append("hit")
     actions.append("stand")
 
-    # Player can only double with two cards
-    if state["can_double"] == True:
-        if len(state["hand"]) == 2:
-            actions.append("double")
+    # Double and surrender only on first decision with 2 cards
+    if state["can_double"] and len(state["hand"]) == 2:
+        actions.append("double")
+        actions.append("surrender")
+
+    # Split requires matching ranks and first decision
+    if len(state["hand"]) == 2:
+        if state["hand"][0] == state["hand"][1]:
+            actions.append("split")
+
+    # Insurance only against dealer Ace
+    if state["dealer_upcard"] == "A":
+        actions.append("insurance")
 
     return actions
-
 
 def apply_action(state, action, next_card=None):
     raise NotImplementedError("This function is not implemented yet.")
