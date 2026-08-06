@@ -30,7 +30,7 @@ def parse_state(text):
 def generate_actions(state):
     actions = []
 
-    # Always legal
+    # Our legal action
     actions.append("hit")
     actions.append("stand")
 
@@ -39,12 +39,12 @@ def generate_actions(state):
         actions.append("double")
         actions.append("surrender")
 
-    # Split requires matching ranks and first decision
+    # Split it wi;l requires matching ranks and first decision
     if len(state["hand"]) == 2:
         if state["hand"][0] == state["hand"][1]:
             actions.append("split")
 
-    # Insurance only against dealer Ace
+    # Insurance it will only bee against dealer Ace
     if state["dealer_upcard"] == "A":
         actions.append("insurance")
 
